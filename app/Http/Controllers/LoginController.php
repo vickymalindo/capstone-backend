@@ -32,25 +32,32 @@ class LoginController extends Controller
         $password = $request->input('password');
 
         $user = User::where('email', $email)->first();
-
-        if($user->password === $password) {
-            $token = Str::random(32);
-
-            $user->update([
-                'api_token' => $token
-            ]);
-
-            return response()->json([
-                'status' => 200,
-                'pesan' => 'login berhasil',
-                'data' => $user
-            ]);
-        } else {
+        if (!$user) {
             return response()->json([
                 'status' => 400,
                 'pesan' => 'login gagal',
                 'data' => ''
             ]);
         }
+  
+        $isValidPassword = Hash::check($password, $user->password);
+        if (!$isValidPassword) {
+            return response()->json([
+                'status' => 400,
+                'pesan' => 'login gagal',
+                'data' => ''
+            ]);
+        }
+
+        $token = Str::random(32);
+        $user->update([
+            'api_token' => $token
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'pesan' => 'login berhasil',
+            'data' => $user
+        ]);
     }
 }

@@ -83,6 +83,10 @@ $app->routeMiddleware([
     'user' => App\Http\Middleware\UserMiddleware::class,
 ]);
 
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+ ]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
