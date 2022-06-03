@@ -2,55 +2,52 @@
 ini baru di test dari postman, untuk CRUD udah ok. 
 
 list endpoint
-+--------+-------------------+------------+----------------------------------------+----------+------------+
-| Verb   | Path              | NamedRoute | Controller                             | Action   | Middleware |
-+--------+-------------------+------------+----------------------------------------+----------+------------+
-| GET    | /                 |            | None                                   | Closure  |            |
-| POST   | /api/register     |            | App\Http\Controllers\LoginController   | register |            |
-| POST   | /api/login        |            | App\Http\Controllers\LoginController   | login    |            |
-| GET    | /api/laporan      |            | App\Http\Controllers\LaporanController | index    | auth       |
-| GET    | /api/laporan/{id} |            | App\Http\Controllers\LaporanController | show     | auth       |
-| DELETE | /api/laporan/{id} |            | App\Http\Controllers\LaporanController | destroy  | auth       |
-| PUT    | /api/laporan/{id} |            | App\Http\Controllers\LaporanController | update   | auth       |
-| POST   | /api/laporan      |            | App\Http\Controllers\LaporanController | create   | auth       |
-+--------+-------------------+------------+----------------------------------------+----------+------------+
-POST : /api/register
-{
-    "status": 200,
-    "pesan": "berhasil membuat akun",
-    "data": {
-        "name": "tes2",
-        "email": "tes2@gmail.com",
-        "password": "$2y$10$maTV0jpqBSizZsr2Qt6kaexTDY0pury26A0j8nLoFx0FfJET0lRem",
-        "level": "user"
-    }
-}
 
-POST : /api/login
-{
-    "status": 200,
-    "pesan": "login berhasil",
-    "data": {
-        "id": 1,
-        "name": "tes",
-        "email": "tes@gmail.com",
-        "level": "user",
-        "created_at": "2022-06-03T01:29:33.000000Z",
-        "updated_at": "2022-06-03T01:32:29.000000Z"
-    }
-}
+* POST   | /api/register
+* POST   | /api/login
+* GET    | /api/laporan | auth |
+* GET    | /api/laporan/{id} | auth |
+* DELETE | /api/laporan/{id} | auth |
+* PUT    | /api/laporan/{id} | auth |
+* POST   | /api/laporan | auth |
 
-POST : /api/laporan
-{
-    "status": 200,
-    "pesan": "data sudah ditambahkan",
-    "data": {
-        "title": "judul coba",
-        "image": "http://localhost:8000/upload/food.jpeg",
-        "description": "deskripsi coba",
-        "location": "lokasi coba"
+**POST : /api/register**
+<p>
+    "status": 200, <br>
+    "pesan": "berhasil membuat akun", <br>
+    "data": { <br>
+        "name": "tes2", <br>
+        "email": "tes2@gmail.com", <br>
+        "password": "$2y$10$maTV0jpqBSizZsr2Qt6kaexTDY0pury26A0j8nLoFx0FfJET0lRem", <br>
+        "level": "user" <br>
     }
-}
+</p>
+
+**POST : /api/login**
+<p>
+    "status": 200, <br>
+    "pesan": "login berhasil", <br>
+    "data": { <br>
+        "id": 1, <br>
+        "name": "tes", <br>
+        "email": "tes@gmail.com", <br>
+        "level": "user", <br>
+        "created_at": "2022-06-03T01:29:33.000000Z", <br>
+        "updated_at": "2022-06-03T01:32:29.000000Z" <br>
+    }
+</p>
+
+**POST : /api/laporan**
+<p>
+    "status": 200, <br>
+    "pesan": "data sudah ditambahkan", <br>
+    "data": { <br>
+        "title": "judul coba", <br>
+        "image": "http://localhost:8000/upload/food.jpeg", <br>
+        "description": "deskripsi coba", <br>
+        "location": "lokasi coba" <br>
+    }
+</p>
 
 
 
