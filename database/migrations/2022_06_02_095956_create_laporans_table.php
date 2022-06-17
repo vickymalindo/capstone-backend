@@ -17,8 +17,9 @@ class CreateLaporansTable extends Migration
             $table->increments('id_laporan');
             $table->integer('id_user');
             $table->string('name');
-            $table->bigInteger('phone');
+            $table->bigInteger('phone')->unique();
             $table->string('image');
+            $table->string('description');
             $table->text('location');
             $table->string('status')->nullable();
             $table->timestamps();

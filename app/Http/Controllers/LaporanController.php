@@ -37,6 +37,7 @@ class LaporanController extends Controller
             'id_user' => 'required',
             'name' => 'required',
             'phone' => 'required',
+            'description' => 'required',
             'image' => 'required', 
             'location' => 'required',
         ]);
@@ -48,6 +49,7 @@ class LaporanController extends Controller
             'id_user' => $request->input('id_user'),
             'name' => $request->input('name'), 
             'phone' => $request->input('phone'), 
+            'description' => $request->input('description'),
             'image' => url('upload/'.$image),
             'location' => $request->input('location'),
             'status' => '',
