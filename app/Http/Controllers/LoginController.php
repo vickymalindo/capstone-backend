@@ -13,6 +13,7 @@ class LoginController extends Controller
         $data = [
             'name' => $request->input('name'),
             'email'=> $request->input('email'),
+            'phone' => $request->input('phone'),
             'password' => Hash::make($request->input('password')),
             'level' => 'user',
         ];
