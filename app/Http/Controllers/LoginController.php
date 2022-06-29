@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -12,7 +13,7 @@ class LoginController extends Controller
     {
         $data = [
             'name' => $request->input('name'),
-            'email'=> $request->input('email'),
+            'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'password' => Hash::make($request->input('password')),
             'level' => 'user',
@@ -40,7 +41,7 @@ class LoginController extends Controller
                 'data' => ''
             ]);
         }
-  
+
         $isValidPassword = Hash::check($password, $user->password);
         if (!$isValidPassword) {
             return response()->json([
