@@ -22,7 +22,7 @@ $router->post('api/register', ['uses' => 'LoginController@register']);
 $router->post('api/login', ['uses' => 'LoginController@login']);
 
 
-$router->group( ['prefix' => 'api', 'middleware' => 'auth'], function() use ($router) {
+$router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->get('laporan/user/{id}', ['uses' => 'LaporanController@indexUser']);
 
