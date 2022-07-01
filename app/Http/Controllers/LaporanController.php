@@ -38,7 +38,7 @@ class LaporanController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'description' => 'required',
-            'image' => 'required', 
+            'image' => 'required',
             'location' => 'required',
         ]);
 
@@ -46,11 +46,11 @@ class LaporanController extends Controller
         $request->file('image')->move('upload', $image);
 
         $data = [
-            'id_user' => $request->input('id_user'),
-            'name' => $request->input('name'), 
-            'phone' => $request->input('phone'), 
+            'id' => $request->input('id'),
+            'name' => $request->input('name'),
+            'phone' => $request->input('phone'),
             'description' => $request->input('description'),
-            'image' => url('upload/'.$image),
+            'image' => url('upload/' . $image),
             'location' => $request->input('location'),
             'status' => '',
         ];
@@ -93,7 +93,7 @@ class LaporanController extends Controller
      */
     public function show($id)
     {
-        $data = Laporan::where('id_laporan', $id)->get();
+        $data = Laporan::where('id', $id)->get();
 
         return response()->json($data);
     }
@@ -118,7 +118,7 @@ class LaporanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Laporan::where('id_laporan', $id)->update($request->all());
+        Laporan::where('id', $id)->update($request->all());
         return response()->json('data berhasil diupdate');
     }
 
@@ -130,7 +130,7 @@ class LaporanController extends Controller
      */
     public function destroy($id)
     {
-        Laporan::where('id_laporan', $id)->delete();
+        Laporan::where('id', $id)->delete();
         return response()->json('data berhasil dihapus');
     }
 }
